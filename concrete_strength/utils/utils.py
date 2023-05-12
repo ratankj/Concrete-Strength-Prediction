@@ -21,7 +21,7 @@ def save_object(file_path,obj):
     except Exception as e:
         logging.info('Exception occured while saving an object')
         raise CustomException(e,sys)
-    
+"""
 def evaluate_model(X_train,y_train,X_test,y_test,models):
     try:
         report = {}
@@ -43,6 +43,8 @@ def evaluate_model(X_train,y_train,X_test,y_test,models):
         logging.info("Exception occure while evaluation of model")
         raise CustomException(e,sys)
     
+"""    
+
 def load_model(file_path):
     try:
         with open(file_path,'rb') as file_obj:
