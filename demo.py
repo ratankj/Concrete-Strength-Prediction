@@ -1,5 +1,5 @@
 from flask import Flask
-from visa.logger import logging
+from concrete_strength.logger import logging
 
 
 app = Flask(__name__)
