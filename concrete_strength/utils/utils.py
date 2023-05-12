@@ -6,8 +6,8 @@ import pandas as pd
 
 from sklearn.metrics import r2_score
 
-from zomato.exception import CustomException
-from zomato.logger import logging
+from concrete_strength.exception import CustomException
+from concrete_strength.logger import logging
 
 def save_object(file_path,obj):
     try:

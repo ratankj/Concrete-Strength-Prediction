@@ -29,9 +29,9 @@ DATASET_URL = "dataset_url"
 DATA_INGESTION_KEY = 'data_ingestion'
 DATA_INGESTION_RAW_DATA_DIR_KEY= "raw_data_dir"
 DATA_INGESTION_INGESTED_DIR_NAME_KEY= "ingested_dir"
-RAW_DATA_DIR_KEY = 'raw'
-TRAIN_DATA_DIR_KEY = 'train'
-TEST_DATA_DIR_KEY = 'test' 
+RAW_DATA_DIR_KEY = 'raw.csv'
+TRAIN_DATA_DIR_KEY = 'train.csv'
+TEST_DATA_DIR_KEY = 'test.csv' 
 
 
 DATA_TRANSFORMATION_ARTIFACT = 'data_transformation'
