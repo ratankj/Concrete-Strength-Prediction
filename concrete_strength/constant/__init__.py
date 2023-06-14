@@ -34,6 +34,7 @@ TRAIN_DATA_DIR_KEY = 'train.csv'
 TEST_DATA_DIR_KEY = 'test.csv' 
 
 
+
 DATA_TRANSFORMATION_ARTIFACT = 'data_transformation'
 DATA_TRANSFORMATION_PREPROCESSING_OBJ = 'preprocessor.pkl'
 

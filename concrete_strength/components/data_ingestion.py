@@ -9,6 +9,8 @@ import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
 from dataclasses import dataclass
+from concrete_strength.constant.data_base import *
+from concrete_strength.data_access.mongo_data import mongodata
 
 
 
@@ -24,18 +26,49 @@ class DataIngestion:
     def __init__(self,):
         self.data_ingestion_config = DataIngestionconfig()
 
+    
+    def get_data_from_mongo_DB(self) -> str:
+        try:
+            
+            # Raw Data Directory Path
+            #raw_data_dir = self.data_ingestion_config.raw_data_dir
+            raw_data_dir=self.data_ingestion_config.raw_data_path
+            
+            # Make Raw data Directory
+            #s.makedirs(raw_data_dir, exist_ok=True)
+            os.makedirs(os.path.dirname(raw_data_dir),exist_ok=True)
+
+            #file_name = FILE_NAME
+
+            #raw_file_path = os.path.join(raw_data_dir, file_name)
+
+            logging.info(
+                f"Downloading file from Mongo DB into :[{raw_data_dir}]")
+            
+            data=mongodata()
+            # Storing mongo data ccs file to raw directoy 
+            data.export_collection_as_csv(collection_name=COLLECTION_NAME,database_name=DATABASE_NAME,file_path=raw_data_dir)
+            
+            logging.info(
+                f"File :[{raw_data_dir}] has been downloaded successfully.")
+            return raw_data_dir
+
+        except Exception as e:
+            raise CustomException(e, sys) from e
+
 
     def initiate_data_ingestion(self):
+        filepath=self.get_data_from_mongo_DB()
 
         logging.info("initiate data ingestion config")
 
         try:
-            df=pd.read_csv(DATASET_PATH)
+            df=pd.read_csv(filepath)
         
 
             logging.info("Reading csv file")
-            os.makedirs(os.path.dirname(self.data_ingestion_config.raw_data_path),exist_ok=True)
-            df.to_csv(self.data_ingestion_config.raw_data_path,index=False)
+            #os.makedirs(os.path.dirname(self.data_ingestion_config.raw_data_path),exist_ok=True)
+            #df.to_csv(self.data_ingestion_config.raw_data_path,index=False)
             
             logging.info(f"dataset path : {DATASET_PATH}")
             logging.info("train test split")
