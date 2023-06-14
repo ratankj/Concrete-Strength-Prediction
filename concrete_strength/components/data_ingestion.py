@@ -31,12 +31,13 @@ class DataIngestion:
 
         try:
             df=pd.read_csv(DATASET_PATH)
+        
 
             logging.info("Reading csv file")
             os.makedirs(os.path.dirname(self.data_ingestion_config.raw_data_path),exist_ok=True)
             df.to_csv(self.data_ingestion_config.raw_data_path,index=False)
             
-
+            logging.info(f"dataset path : {DATASET_PATH}")
             logging.info("train test split")
 
             train_set,test_Set = train_test_split(df,test_size=0.20,random_state=42)

@@ -39,3 +39,5 @@ DATA_TRANSFORMATION_PREPROCESSING_OBJ = 'preprocessor.pkl'
 
 MODEL_ARTIFACT = 'model_trainer'
 MODEL_OBJECT = 'model.pkl'
+
+
